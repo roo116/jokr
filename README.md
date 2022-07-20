@@ -3,13 +3,13 @@
 ## mock ups
 
 * Login Page
-* ![Login Page](./HW-14-Boilerplate/assets/images/landing-page-draft-1.png)
+* ![Login Page](./assets/images/landing-page-draft-1.png)
 
 * Dashboard
-* ![Dashboard](./HW-14-Boilerplate/assets/images/dashboard-draft-1.png)
+* ![Dashboard](./assets/images/dashboard-draft-1.png)
 
 * Search Page
-* ![Search Page](./HW-14-Boilerplate/assets/images/search-page-draft-1.png)
+* ![Search Page](./assets/images/search-page-draft-1.png)
 
 ## user story
 
