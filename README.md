@@ -3,13 +3,17 @@
 ## mock ups
 
 * Login Page
-* ![Login Page](./HW-14-Boilerplate/assets/images/landing-page-draft-1.png)
+* ![Login Page](./assets/images/landing-page-draft-1.png)
 
 * Dashboard
-* ![Dashboard](./HW-14-Boilerplate/assets/images/dashboard-draft-1.png)
+* ![Dashboard](./assets/images/dashboard-draft-1.png)
 
 * Search Page
-* ![Search Page](./HW-14-Boilerplate/assets/images/search-page-draft-1.png)
+* ![Search Page](./assets/images/search-page-draft-1.png)
+
+## Heroku deploy link
+
+[Heroku Link](https://damp-bastion-89209.herokuapp.com/)
 
 ## user story
 
@@ -31,3 +35,4 @@ WHEN I want to delete a joke from my saved jokes list
 THEN I can click the "delete" button and delete the joke
 WHEN I want to go back to searching for jokes
 THEN I can click the "search" link and be brought back to the search page
+```
