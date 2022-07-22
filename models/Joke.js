@@ -1,3 +1,6 @@
+const sequelize = require("../config/config.js");
+const { Model, DataTypes } = require("sequelize");
+
 class Joke extends Model {}
 
 // create fields/columns for User model
