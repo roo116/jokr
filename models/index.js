@@ -1,5 +1,5 @@
 const User = require("./User");
-// const Joke = require("./Joke");
+const Joke = require("./Joke");
 
 // Joke.belongsTo(User, {
 //   foreignKey: "user_id",
@@ -12,6 +12,6 @@ const User = require("./User");
 // });
 
 module.exports = {
-  User
-  // Joke
+  User,
+  Joke
 };
