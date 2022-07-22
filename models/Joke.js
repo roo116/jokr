@@ -3,7 +3,7 @@ const { Model, DataTypes } = require("sequelize");
 
 class Joke extends Model {}
 
-// create fields/columns for User model
+// create fields/columns for joke model
 Joke.init(
   {
     id: {
@@ -27,11 +27,11 @@ Joke.init(
     },
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "user",
-        key: "id",
-      },
+      allowNull: true,
+      // references: {
+      //   model: "user",
+      //   key: "id",
+      // },
     },
   },
   {
