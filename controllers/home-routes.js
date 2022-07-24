@@ -3,6 +3,7 @@ const router = require("express").Router();
 
 // get the html for the search page
 router.get("/", (req, res) => {
+  console.log(req.session);
   res.render("search-joke");
 });
 
