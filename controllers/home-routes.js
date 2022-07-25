@@ -25,6 +25,10 @@ router.get("/login", (req, res) => {
 
 // get html for user dashboard
 router.get("/dashboard", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect("/login");
+    return;
+  }
   res.render("dashboard", {
     loggedIn: req.session.loggedIn,
   });
