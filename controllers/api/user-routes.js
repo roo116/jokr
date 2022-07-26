@@ -21,12 +21,12 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    include: {
-      model: SavedJoke,
-      attributes: ["id", "category", "setup", "punchline"],
-      through: SavedJoke,
-      as: "jokes",
-    },
+    // include: {
+    //   model: SavedJoke,
+    //   attributes: ["id", "category", "setup", "punchline"],
+    //   through: SavedJoke,
+    //   as: "jokes",
+    // },
     where: {
       id: req.params.id,
     },
