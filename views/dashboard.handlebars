@@ -1,7 +1,16 @@
 <div id="saved-joke-container">
-  <p>You have no saved jokes yet!</p>
+  {{!-- {{#if savedJokes.length}} --}}
   <h3>Saved Jokes:</h3>
-  <div>{{!-- joke cards go here --}}</div>
+  <div>
+    <ul>
+    {{!-- {{#each savedJokes as |savedJoke|}} --}}
+    <li>{{!-- saved joke info parse and display --}}</li>
+    {{!-- {{/each}} --}}
+    </ul>
+  </div>
+  {{!-- {{else}} --}}
+  <p>You have no saved jokes yet!</p>
+  {{!-- {{/if}} --}}
 </div>
 
 <div>{{!-- recent searches go here, if we get to that --}}</div>
