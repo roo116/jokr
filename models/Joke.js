@@ -1,5 +1,6 @@
 const sequelize = require("../config/config.js");
 const { Model, DataTypes } = require("sequelize");
+const JokeCat = require("./JokeCat.js");
 
 class Joke extends Model {}
 
@@ -12,10 +13,10 @@ Joke.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    category_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    // category_name: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
     setup: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -25,13 +26,16 @@ Joke.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    user_id: {
+    category_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
-      // references: {
-      //   model: "user",
-      //   key: "id",
+      references: {
+        model: "jokecat",
+        key: "id",
+      },
       // },
+      // user_id: {
+      //   type: DataTypes.INTEGER,
+      //   allowNull: true,
     },
   },
   {

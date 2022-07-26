@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User } = require("../../models");
+const SavedJoke = require("../../models/SavedJoke");
 
 // get all users
 router.get("/", (req, res) => {
@@ -16,7 +17,16 @@ router.get("/", (req, res) => {
 // get 1 users
 router.get("/:id", (req, res) => {
   User.findOne({
-    attributes: { exclude: ["password"] },
+    attributes: ["id", "username", "email"],
+    where: {
+      id: req.params.id,
+    },
+    include: {
+      model: SavedJoke,
+      attributes: ["id", "category", "setup", "punchline"],
+      through: SavedJoke,
+      as: "jokes",
+    },
     where: {
       id: req.params.id,
     },
