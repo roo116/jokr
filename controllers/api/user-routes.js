@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Joke } = require("../../models");
 const SavedJoke = require("../../models/SavedJoke");
 
 // get all users
@@ -17,26 +17,21 @@ router.get("/", (req, res) => {
 // get 1 users
 router.get("/:id", (req, res) => {
   User.findOne({
-    attributes: ["id", "username", "email"],
+    attributes: ["username", "joke_id"],
     where: {
       id: req.params.id,
     },
-    // include: {
-    //   model: SavedJoke,
-    //   attributes: ["id", "category", "setup", "punchline"],
-    //   through: SavedJoke,
-    //   as: "jokes",
-    // },
-    where: {
-      id: req.params.id,
+    include: {
+      model: Joke,
+      attributes: ["id", "setup", "punchline"],
     },
   })
-    .then((dbUserData) => {
-      if (!dbUserData) {
+    .then((dbJokeData) => {
+      if (!dbJokeData) {
         res.status(404).json({ message: "No user found with this id" });
         return;
       }
-      res.json(dbUserData);
+      res.json(dbJokeData);
     })
     .catch((err) => {
       console.log(err);
@@ -45,25 +40,49 @@ router.get("/:id", (req, res) => {
 });
 
 // add user
-router.post("/", (req, res) => {
-  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
-  User.create({
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
-  })
-    .then((dbUserData) => {
-      req.session.save(() => {
-        req.session.user_id = dbUserData.id;
-        req.session.username = dbUserData.username;
-        req.session.loggedIn = true;
+// router.post("/", (req, res) => {
+//   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+//   User.create({
+//     username: req.body.username,
+//     email: req.body.email,
+//     password: req.body.password,
+//   })
+//     .then((dbUserData) => {
+//       req.session.save(() => {
+//         req.session.user_id = dbUserData.id;
+//         req.session.username = dbUserData.username;
+//         req.session.loggedIn = true;
 
-        res.json(dbUserData);
-      });
+//         res.json(dbUserData);
+//       });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
+
+// add new user
+router.post("/", (req, res) => {
+  User.create(req.body)
+    .then((user) => {
+      // if there's joke ids, we need to create pairings to bulk create in the SavdeJoke model
+      if (req.body.jokeIds && req.body.jokeIds.length) {
+        const savedJokeIdArr = req.body.jokeIds.map((joke_id) => {
+          return {
+            user_id: user.id,
+            joke_id,
+          };
+        });
+        return SavedJoke.bulkCreate(savedJokeIdArr);
+      }
+      // if no joke ids, just respond
+      res.status(200).json(user);
     })
+    .then((savedJokeIds) => res.status(200).json(savedJokeIds))
     .catch((err) => {
       console.log(err);
-      res.status(500).json(err);
+      res.status(400).json(err);
     });
 });
 
