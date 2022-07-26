@@ -8,11 +8,11 @@ async function categorySearchHandler(event) {
   const categoryId = this.id;
 
   const response = await fetch(`api/category/${categoryId}`, {
-    method: "GET"
+    method: "GET",
   });
 
   if (response.ok) {
-    console.log(response);
+    console.log(response.json());
   } else {
     console.log("OOPS");
   }
