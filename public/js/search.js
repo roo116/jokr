@@ -12,7 +12,8 @@ async function categorySearchHandler(event) {
   });
 
   if (response.ok) {
-    console.log(response.json());
+    return response.json
+
   } else {
     console.log("OOPS");
   }
