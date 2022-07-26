@@ -12,9 +12,22 @@ async function categorySearchHandler(event) {
   });
 
   if (response.ok) {
-    return response.json
+    response.json().then((data) => {
+      const jokes = data.jokes;
+      const resultContainer = document.querySelector(
+        "#search-result-container"
+      );
+      resultContainer.textContent = "";
 
+      jokes.forEach((joke) => {
+        const setup = joke.setup;
+        const punchline = joke.punchline;
+        const jokeEl = document.createElement("p");
+        jokeEl.textContent = setup + " " + punchline;
+        resultContainer.appendChild(jokeEl);
+      });
+    });
   } else {
-    console.log("OOPS");
+    alert(response.statusText);
   }
 }
