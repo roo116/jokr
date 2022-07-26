@@ -2,9 +2,9 @@
   <h2>Click on a category!</h2>
   <div id="category-container">
     <ul>
-      {{!-- {{#each categories as |category|}} --}}
-      {{!-- logic to display categories here, will need js file for on click function --}}
-      {{!-- {{/each}} --}}
+      {{#each categories}}
+        <li><a>{{category_name}}</a></li>
+      {{/each}}
     </ul>
   </div>
 

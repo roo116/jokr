@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("sequelize");
-const { User, SavedJoke } = require("../models/");
+const { User, SavedJoke, JokeCat, Joke } = require("../models/");
 
 // get the html for the search page
 router.get("/", (req, res) => {
@@ -8,9 +8,22 @@ router.get("/", (req, res) => {
     res.redirect("/login");
     return;
   }
-  res.render("search-joke", {
-    loggedIn: req.session.loggedIn,
-  });
+  console.log("======================");
+  JokeCat.findAll()
+    .then((dbJokeCatData) => {
+      const categories = dbJokeCatData.map((category) =>
+        category.get({ plain: true })
+      );
+
+      res.render("search-joke", {
+        categories,
+        loggedIn: req.session.loggedIn,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // get the html for the login page
