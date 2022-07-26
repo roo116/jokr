@@ -3,7 +3,7 @@
   <div id="category-container">
     <ul>
       {{#each categories}}
-        <li><a>{{category_name}}</a></li>
+        <li id="{{id}}" class="category-link"><a>{{category_name}}</a></li>
       {{/each}}
     </ul>
   </div>
@@ -12,3 +12,5 @@
     {{! once a category is clicked, joke cards go here }}
   </div>
 </div>
+
+<script src="/js/search.js"></script>
