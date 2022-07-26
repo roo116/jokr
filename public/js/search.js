@@ -23,7 +23,7 @@ async function categorySearchHandler(event) {
         const setup = joke.setup;
         const punchline = joke.punchline;
         const jokeEl = document.createElement("p");
-        (jokeEl.textContent = setup), punchline;
+        jokeEl.textContent = setup, punchline;
         resultContainer.appendChild(jokeEl);
       });
     });
