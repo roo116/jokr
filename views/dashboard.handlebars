@@ -1,10 +1,24 @@
 <div id="saved-joke-container">
   {{#if savedJokes.length}}
   <h3>Saved Jokes:</h3>
+  <div id="joke-card-container">
     {{#each savedJokes}}
-      {{!-- saved joke cards go here --}}
+    <div class="joke-card">
+      <div class="card horizontal">
+        <div class="card-stacked">
+          <div class="card-content">
+            <p>{{setup}}</p>
+            <br>
+            <p>{{punchline}}</p>
+          </div>
+          <div class="card-action">
+            <button class="btn" type="button">Delete</button>
+          </div>
+        </div>
+      </div>
+      </div>
     {{/each}}
-    </ul>
+    </div>
   </div>
   {{else}}
   <p>You have no saved jokes yet!</p>

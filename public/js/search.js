@@ -14,9 +14,7 @@ async function categorySearchHandler(event) {
   if (response.ok) {
     response.json().then((data) => {
       const jokes = data.jokes;
-      const resultContainer = document.querySelector(
-        "#joke-card-container"
-      );
+      const resultContainer = document.querySelector("#joke-card-container");
       resultContainer.innerHTML = "";
 
       jokes.forEach((joke) => {
@@ -32,16 +30,36 @@ async function categorySearchHandler(event) {
             <p>${punchline}</p>
           </div>
           <div class="card-action">
-            <button class="btn" type="button">Save</button>
+            <button class="save-btn btn" data-id="${joke.id}" type="button">Save</button>
           </div>
         </div>
       </div>
         `;
         jokeCardEl.classList.add("joke-card");
+        jokeCardEl.addEventListener("click", saveJokeHandler);
         resultContainer.appendChild(jokeCardEl);
       });
     });
   } else {
     alert(response.statusText);
   }
+}
+
+async function saveJokeHandler(event) {
+    const joke_id = this.querySelector('.save-btn').dataset.id;
+    // console.log(joke_id);
+
+    const response = await fetch(`api/savedjokes/`, {
+      method: "POST",
+      body: JSON.stringify({
+        joke_id,
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (response.ok) {
+      console.log('response ok')
+    } else {
+      alert(response.statusText);
+    }
 }

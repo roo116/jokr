@@ -48,11 +48,12 @@ router.get("/dashboard", (req, res) => {
     where: {
       user_id: req.session.user_id,
     },
+    // include goes here?
   })
     .then((dbSavedJokeData) => {
-      const savedJokes = dbSavedJokeData.map((savedJoke) =>
-        savedJoke.get({ plain: true })
-      );
+      const savedJokes = dbSavedJokeData.map((savedJoke) => {
+        savedJoke.get({ plain: true });
+      });
 
       res.render("dashboard", {
         savedJokes,
