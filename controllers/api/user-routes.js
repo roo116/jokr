@@ -40,51 +40,51 @@ router.get("/:id", (req, res) => {
 });
 
 // add user
-// router.post("/", (req, res) => {
-//   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
-//   User.create({
-//     username: req.body.username,
-//     email: req.body.email,
-//     password: req.body.password,
-//   })
-//     .then((dbUserData) => {
-//       req.session.save(() => {
-//         req.session.user_id = dbUserData.id;
-//         req.session.username = dbUserData.username;
-//         req.session.loggedIn = true;
-
-//         res.json(dbUserData);
-//       });
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
-
-// add new user
 router.post("/", (req, res) => {
-  User.create(req.body)
-    .then((user) => {
-      // if there's joke ids, we need to create pairings to bulk create in the SavdeJoke model
-      if (req.body.jokeIds && req.body.jokeIds.length) {
-        const savedJokeIdArr = req.body.jokeIds.map((joke_id) => {
-          return {
-            user_id: user.id,
-            joke_id,
-          };
-        });
-        return SavedJoke.bulkCreate(savedJokeIdArr);
-      }
-      // if no joke ids, just respond
-      res.status(200).json(user);
+  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+  User.create({
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+  })
+    .then((dbUserData) => {
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+
+        res.json(dbUserData);
+      });
     })
-    .then((savedJokeIds) => res.status(200).json(savedJokeIds))
     .catch((err) => {
       console.log(err);
-      res.status(400).json(err);
+      res.status(500).json(err);
     });
 });
+
+// add new user
+// router.post("/", (req, res) => {
+//   User.create(req.body)
+//     .then((user) => {
+//       // if there's joke ids, we need to create pairings to bulk create in the SavdeJoke model
+//       if (req.body.jokeIds && req.body.jokeIds.length) {
+//         const savedJokeIdArr = req.body.jokeIds.map((joke_id) => {
+//           return {
+//             user_id: user.id,
+//             joke_id,
+//           };
+//         });
+//         return SavedJoke.bulkCreate(savedJokeIdArr);
+//       }
+//       // if no joke ids, just respond
+//       res.status(200).json(user);
+//     })
+//     .then((savedJokeIds) => res.status(200).json(savedJokeIds))
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(400).json(err);
+//     });
+// });
 
 router.post("/login", (req, res) => {
   User.findOne({
