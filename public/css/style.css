@@ -75,6 +75,41 @@ input {
     padding: 10px;
 }
 
+#category-list {
+  display: flex;
+}
+
+#category-list .category-link {
+  margin: 0 10px 0 10px;
+}
+
+#category-list .category-link a {
+  color: var(--dark);
+}
+
+
+#joke-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.joke-card {
+  width: 350px;
+  margin: 30px;
+}
+
+.card-stacked {
+  height: 350px;
+}
+
+.joke-card button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: none;
+}
+
 .card-header h2 {
   color: var(--primary);
 }
@@ -112,7 +147,7 @@ input {
 
 .navbar {
   width: 100%;
-  position: fixed;
+  /* position: fixed; */
   background-color: var(--dark);
 }
 
@@ -176,7 +211,7 @@ input {
 }
 
 /* CARDS */
-.card {
+/* .card {
   margin: 0 0 20px 0;
   border: 3px solid var(--dark);
   border-radius: var(--border-radius);
@@ -191,7 +226,7 @@ input {
 
 .card-body {
   padding: 1%;
-}
+} */
 
 /* FORM */
 .form-label,

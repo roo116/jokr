@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
   }
   console.log("======================");
   // console.log(req.session.user_id);
-  SavedJoke.findAll()
+  JokeCat.findAll()
     .then((dbJokeCatData) => {
       const categories = dbJokeCatData.map((category) =>
         category.get({ plain: true })

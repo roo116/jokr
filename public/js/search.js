@@ -15,16 +15,30 @@ async function categorySearchHandler(event) {
     response.json().then((data) => {
       const jokes = data.jokes;
       const resultContainer = document.querySelector(
-        "#search-result-container"
+        "#joke-card-container"
       );
-      resultContainer.textContent = "";
+      resultContainer.innerHTML = "";
 
       jokes.forEach((joke) => {
         const setup = joke.setup;
         const punchline = joke.punchline;
-        const jokeEl = document.createElement("p");
-        jokeEl.textContent = setup + " " + punchline;
-        resultContainer.appendChild(jokeEl);
+        const jokeCardEl = document.createElement("div");
+        jokeCardEl.innerHTML = `
+        <div class="card horizontal">
+        <div class="card-stacked">
+          <div class="card-content">
+            <p>${setup}</p>
+            <br>
+            <p>${punchline}</p>
+          </div>
+          <div class="card-action">
+            <button class="btn" type="button">Save</button>
+          </div>
+        </div>
+      </div>
+        `;
+        jokeCardEl.classList.add("joke-card");
+        resultContainer.appendChild(jokeCardEl);
       });
     });
   } else {
