@@ -9,14 +9,14 @@ router.get("/", (req, res) => {
     return;
   }
   console.log("======================");
-  JokeCat.findAll()
-    .then((dbJokeCatData) => {
-      const categories = dbJokeCatData.map((category) =>
-        category.get({ plain: true })
+  SavedJoke.findAll()
+    .then((dbSavedJokeData) => {
+      const savedJokes = dbSavedJokeData.map((savedJoke) =>
+        savedJoke.get({ plain: true })
       );
 
       res.render("search-joke", {
-        categories,
+        savedJokes,
         loggedIn: req.session.loggedIn,
       });
     })
@@ -42,9 +42,22 @@ router.get("/dashboard", (req, res) => {
     res.redirect("/login");
     return;
   }
-  res.render("dashboard", {
-    loggedIn: req.session.loggedIn,
-  });
+  console.log("======================");
+  JokeCat.findAll()
+    .then((dbJokeCatData) => {
+      const savedJokes = dbSavedJokeData.map((category) =>
+        category.get({ plain: true })
+      );
+
+      res.render("dashboard", {
+        loggedIn: req.session.loggedIn,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+
 });
 
 module.exports = router;
