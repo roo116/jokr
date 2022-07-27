@@ -12,6 +12,7 @@ router.get("/", (req, res) => {
   // console.log(req.session.user_id);
   JokeCat.findAll()
     .then((dbJokeCatData) => {
+      // console.log(dbJokeCatData);
       const categories = dbJokeCatData.map((category) =>
         category.get({ plain: true })
       );
@@ -39,20 +40,28 @@ router.get("/login", (req, res) => {
 
 // get html for user dashboard
 router.get("/dashboard", (req, res) => {
-  if (!req.session.loggedIn) {
-    res.redirect("/login");
-    return;
-  }
+  // if (!req.session.loggedIn) {
+  //   res.redirect("/login");
+  //   return;
+  // }
   console.log("======================");
-  SavedJoke.findAll({
+  User.findOne({
+    attributes: ["username", "joke_id"],
     where: {
-      user_id: req.session.user_id,
+      id: req.session.user_id,
+    },
+    include: {
+      model: Joke,
+      attributes: ["id", "setup", "punchline"],
     },
   })
-    .then((dbSavedJokeData) => {
-      const savedJokes = dbSavedJokeData.map((savedJoke) =>
-        savedJoke.get({ plain: true })
-      );
+    .then((dbJokeData) => {
+      if (!dbJokeData) {
+        res.status(404).json({ message: "No user found with this id" });
+        return;
+      }
+      const userData = dbJokeData.get({plain: true});
+      const savedJokes = userData.jokes;
 
       res.render("dashboard", {
         savedJokes,
@@ -62,7 +71,7 @@ router.get("/dashboard", (req, res) => {
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
-    });
-});
+    })
+    })
 
 module.exports = router;
