@@ -8,11 +8,11 @@ if you want to change any colors of make more, go for it. Here's the site:
 https://www.hexcolortool.com/ */
 
 :root {
-  --primary: #ccdad1;
-  --secondary: #9caea9;
-  --tertiary: #788585;
-  --light-dark: #6f6866;
-  --dark: #38302e;
+  --primary: #00a5e3;
+  --secondary: #4dd091;
+  --tertiary: #ff5c77 ;
+  --light-dark: #ffffff;
+  --dark: #ffec59;
   --border-radius: 0.3rem;
 }
 
@@ -75,41 +75,6 @@ input {
     padding: 10px;
 }
 
-#category-list {
-  display: flex;
-}
-
-#category-list .category-link {
-  margin: 0 10px 0 10px;
-}
-
-#category-list .category-link a {
-  color: var(--dark);
-}
-
-
-#joke-card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.joke-card {
-  width: 350px;
-  margin: 30px;
-}
-
-.card-stacked {
-  height: 350px;
-}
-
-.joke-card button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-transform: none;
-}
-
 .card-header h2 {
   color: var(--primary);
 }
@@ -122,7 +87,7 @@ input {
   display: block;
   margin: 5px 0;
   border-radius: var(--border-radius);
-  color: var(--primary);
+  color: var(--secondary);
   border: none;
   outline: none;
   background-color: var(--light-dark);
@@ -147,7 +112,7 @@ input {
 
 .navbar {
   width: 100%;
-  /* position: fixed; */
+  position: fixed;
   background-color: var(--dark);
 }
 
@@ -211,7 +176,7 @@ input {
 }
 
 /* CARDS */
-/* .card {
+.card {
   margin: 0 0 20px 0;
   border: 3px solid var(--dark);
   border-radius: var(--border-radius);
@@ -226,7 +191,7 @@ input {
 
 .card-body {
   padding: 1%;
-} */
+}
 
 /* FORM */
 .form-label,
