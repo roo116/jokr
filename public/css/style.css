@@ -25,7 +25,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "IBM Plex Sans", sans-serif;
-  color: var(--dark);
+  color: var(--secondary);
   line-height: 1.5;
   font-size: 16px;
 }
