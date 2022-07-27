@@ -9,14 +9,15 @@ router.get("/", (req, res) => {
     return;
   }
   console.log("======================");
+  // console.log(req.session.user_id);
   SavedJoke.findAll()
-    .then((dbSavedJokeData) => {
-      const savedJokes = dbSavedJokeData.map((savedJoke) =>
-        savedJoke.get({ plain: true })
+    .then((dbJokeCatData) => {
+      const categories = dbJokeCatData.map((category) =>
+        category.get({ plain: true })
       );
 
       res.render("search-joke", {
-        savedJokes,
+        categories,
         loggedIn: req.session.loggedIn,
       });
     })
@@ -43,13 +44,18 @@ router.get("/dashboard", (req, res) => {
     return;
   }
   console.log("======================");
-  JokeCat.findAll()
-    .then((dbJokeCatData) => {
-      const savedJokes = dbSavedJokeData.map((category) =>
-        category.get({ plain: true })
+  SavedJoke.findAll({
+    where: {
+      user_id: req.session.user_id,
+    },
+  })
+    .then((dbSavedJokeData) => {
+      const savedJokes = dbSavedJokeData.map((savedJoke) =>
+        savedJoke.get({ plain: true })
       );
 
       res.render("dashboard", {
+        savedJokes,
         loggedIn: req.session.loggedIn,
       });
     })
@@ -57,7 +63,6 @@ router.get("/dashboard", (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
-
 });
 
 module.exports = router;
