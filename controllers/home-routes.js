@@ -9,6 +9,7 @@ router.get("/", (req, res) => {
     return;
   }
   console.log("======================");
+  // console.log(req.session.user_id);
   JokeCat.findAll()
     .then((dbJokeCatData) => {
       const categories = dbJokeCatData.map((category) =>
@@ -42,9 +43,26 @@ router.get("/dashboard", (req, res) => {
     res.redirect("/login");
     return;
   }
-  res.render("dashboard", {
-    loggedIn: req.session.loggedIn,
-  });
+  console.log("======================");
+  SavedJoke.findAll({
+    where: {
+      user_id: req.session.user_id,
+    },
+  })
+    .then((dbSavedJokeData) => {
+      const savedJokes = dbSavedJokeData.map((savedJoke) =>
+        savedJoke.get({ plain: true })
+      );
+
+      res.render("dashboard", {
+        savedJokes,
+        loggedIn: req.session.loggedIn,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;

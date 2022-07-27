@@ -1,15 +1,14 @@
 <div>
   <h2>Click on a category!</h2>
   <div id="category-container">
-    <ul>
+    <ul id="category-list">
       {{#each categories}}
         <li id="{{id}}" class="category-link"><a>{{category_name}}</a></li>
       {{/each}}
     </ul>
   </div>
 
-  <div id="search-result-container">
-    {{! once a category is clicked, joke cards go here }}
+  <div id="joke-card-container">
   </div>
 </div>
 

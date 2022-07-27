@@ -26,7 +26,7 @@ User.init(
       allowNull: false,
       unique: true,
       validate: {
-        isEmail: true
+        isEmail: true,
       },
     },
     password: {
@@ -36,7 +36,10 @@ User.init(
         len: [4],
       },
     },
-    },
+    joke_id: {
+      type: DataTypes.INTEGER,
+    }
+  },
   {
     hooks: {
       // set up beforeCreate lifecycle "hook" functionality

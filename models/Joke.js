@@ -13,10 +13,6 @@ Joke.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    // category_name: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
     setup: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -31,12 +27,12 @@ Joke.init(
       references: {
         model: "jokecat",
         key: "id",
-      },
-      // },
-      // user_id: {
-      //   type: DataTypes.INTEGER,
-      //   allowNull: true,
-    },
+      }
+    }
+    // user_id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true,
+    // },
   },
   {
     sequelize,
