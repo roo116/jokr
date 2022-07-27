@@ -147,9 +147,9 @@ input {
 }
 
 .navbar {
+  margin-top: 30px;
   width: 100%;
-  /* position: fixed; */
-  background-color: var(--dark);
+  background-color: var(--primary);
 }
 
 .nav-item {
@@ -157,7 +157,7 @@ input {
 }
 
 .nav-item a {
-  color: var(--primary);
+  color: var(--dark);
 }
 
 .hero {
@@ -199,6 +199,10 @@ input {
 
 .list-item:hover {
   background-color: var(--dark);
+}
+
+footer {
+  margin: 0 10px 5px 0;
 }
 
 .footer a {
