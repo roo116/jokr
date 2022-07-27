@@ -58,7 +58,7 @@ async function saveJokeHandler(event) {
     });
 
     if (response.ok) {
-      console.log('response ok')
+      this.querySelector('.save-btn').textContent = "Saved!";
     } else {
       alert(response.statusText);
     }

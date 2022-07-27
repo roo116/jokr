@@ -12,7 +12,7 @@
             <p>{{punchline}}</p>
           </div>
           <div class="card-action">
-            <button class="btn" type="button">Delete</button>
+            <button class="delete-btn btn" data-id="{{savedjoke.id}}" type="button">Delete</button>
           </div>
         </div>
       </div>
@@ -24,3 +24,5 @@
   <p>You have no saved jokes yet!</p>
   {{/if}}
 </div>
+
+<script src="/js/delete-saved-joke.js"></script>
