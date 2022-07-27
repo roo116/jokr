@@ -3,29 +3,28 @@ const Joke = require("./Joke");
 const SavedJoke = require("./SavedJoke");
 const JokeCat = require("./JokeCat");
 
-JokeCat.hasMany(Joke, {
-  foreignKey: "category_id",
-});
+// associations
+   Joke.belongsToMany(User, {
+    through: SavedJoke,
+  });
 
-Joke.belongsTo(JokeCat, {
-  foreignKey: "category_id",
-  onDelete: "CASCADE",
-});
+User.belongsToMany(Joke, {
+  through: SavedJoke,
+})
 
-// User.belongsToMany(Joke, {
-//   foreignKey: "joke_id",
-// });
+  JokeCat.hasMany(Joke, {
+    foreignKey: "category_id",
+  });
 
-// Joke.belongsToMany(User, {
-//   through: SavedJoke,
-//   as: "jokes",
-//   foreignKey: "user_id",
-// });
+  Joke.belongsTo(JokeCat, {
+    foreignKey: "category_id",
+    onDelete: "CASCADE",
+  });
 
-
-module.exports = {
-  User,
-  Joke,
-  SavedJoke,
-  JokeCat,
-};
+  
+  module.exports = {
+    User,
+    Joke,
+    SavedJoke,
+    JokeCat,
+  };
