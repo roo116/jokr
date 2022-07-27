@@ -8,11 +8,11 @@ if you want to change any colors of make more, go for it. Here's the site:
 https://www.hexcolortool.com/ */
 
 :root {
-  --primary: #ccdad1;
-  --secondary: #9caea9;
-  --tertiary: #788585;
-  --light-dark: #6f6866;
-  --dark: #38302e;
+  --primary: #004466;
+  --secondary: #00b159;
+  --tertiary: #d11141;
+  --light-dark: #f37735;
+  --dark: #99ddf9;
   --border-radius: 0.3rem;
 }
 
@@ -97,6 +97,7 @@ input {
 .joke-card {
   width: 350px;
   margin: 30px;
+  color:var(--primary)
 }
 
 .card-stacked {
@@ -562,3 +563,9 @@ input {
     flex: 0 0 100%;
   }
 }
+
+
+
+
+
+
