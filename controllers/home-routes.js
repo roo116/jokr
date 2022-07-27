@@ -48,7 +48,7 @@ router.get("/dashboard", (req, res) => {
   User.findOne({
     attributes: ["username", "joke_id"],
     where: {
-      id: 1,
+      id: req.session.user_id,
     },
     include: {
       model: Joke,
