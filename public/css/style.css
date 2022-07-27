@@ -25,7 +25,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "IBM Plex Sans", sans-serif;
-  color: var(--secondary);
+  color: var(--dark);
   line-height: 1.5;
   font-size: 16px;
 }
@@ -47,7 +47,7 @@ h2 a:visited {
 }
 
 h2 a {
-  color: var(--primary);
+  color: var(--dark);
 }
 
 header {
@@ -75,43 +75,8 @@ input {
     padding: 10px;
 }
 
-#category-list {
-  display: flex;
-}
-
-#category-list .category-link {
-  margin: 0 10px 0 10px;
-}
-
-#category-list .category-link a {
-  color: var(--dark);
-}
-
-
-#joke-card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.joke-card {
-  width: 350px;
-  margin: 30px;
-}
-
-.card-stacked {
-  height: 350px;
-}
-
-.joke-card button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-transform: none;
-}
-
 .card-header h2 {
-  color: var(--primary);
+  color: var(--dark);
 }
 
 .btn {
@@ -122,7 +87,7 @@ input {
   display: block;
   margin: 5px 0;
   border-radius: var(--border-radius);
-  color: var(--primary);
+  color: var(--dark);
   border: none;
   outline: none;
   background-color: var(--light-dark);
@@ -147,7 +112,7 @@ input {
 
 .navbar {
   width: 100%;
-  /* position: fixed; */
+  position: fixed;
   background-color: var(--dark);
 }
 
@@ -211,7 +176,7 @@ input {
 }
 
 /* CARDS */
-/* .card {
+.card {
   margin: 0 0 20px 0;
   border: 3px solid var(--dark);
   border-radius: var(--border-radius);
@@ -226,7 +191,7 @@ input {
 
 .card-body {
   padding: 1%;
-} */
+}
 
 /* FORM */
 .form-label,
