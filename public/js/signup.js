@@ -9,6 +9,7 @@ const signupFormHandler = async function(event) {
     body: JSON.stringify({
       username: usernameEl.value,
       password: passwordEl.value,
+      
     }),
     headers: { 'Content-Type': 'application/json' },
   });
