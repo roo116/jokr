@@ -14,22 +14,6 @@ router.get("/", (req, res) => {
     });
 });
 
-// router.put("/", (req, res) => {
-//   User.update(req.body, {
-//     individualHooks: true,
-//     where: {
-//       id: req.session.id,
-//     },
-//   })
-//   .then((dbUserData) => {
-//     if (!dbJokeData) {
-//       res.status(404).json({ message: "No user found with this id" });
-//       return;
-//     }
-
-//   })
-// })
-
 // get 1 users
 router.get("/:id", (req, res) => {
   User.findOne({
@@ -78,29 +62,6 @@ router.post("/", (req, res) => {
     });
 });
 
-// add new user
-// router.post("/", (req, res) => {
-//   User.create(req.body)
-//     .then((user) => {
-//       // if there's joke ids, we need to create pairings to bulk create in the SavdeJoke model
-//       if (req.body.jokeIds && req.body.jokeIds.length) {
-//         const savedJokeIdArr = req.body.jokeIds.map((joke_id) => {
-//           return {
-//             user_id: user.id,
-//             joke_id,
-//           };
-//         });
-//         return SavedJoke.bulkCreate(savedJokeIdArr);
-//       }
-//       // if no joke ids, just respond
-//       res.status(200).json(user);
-//     })
-//     .then((savedJokeIds) => res.status(200).json(savedJokeIds))
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(400).json(err);
-//     });
-// });
 
 router.post("/login", (req, res) => {
   User.findOne({
