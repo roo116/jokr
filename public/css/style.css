@@ -74,7 +74,9 @@ input {
     margin: 0 0 5px;
     padding: 10px;
 }
-
+iframe{
+  float: right;
+}
 #category-list {
   display: flex;
 }
