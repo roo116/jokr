@@ -83,10 +83,19 @@ input {
   margin: 0 10px 0 10px;
 }
 
-#category-list .category-link a {
-  color: var(--dark);
+#category-list .category-link {
+  background-color: var(--dark);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: none;
+  box-shadow: 3px 3px var(--light-dark);
 }
 
+#category-list .category-link:hover {
+  background-color: white;
+}
 
 #joke-card-container {
   display: flex;
