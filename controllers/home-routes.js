@@ -38,6 +38,34 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+// get html for update user
+router.get("/updateUser", (req, res) => {
+  console.log("======================");
+  User.findOne({
+    where: {
+      id: req.session.user_id,
+    },
+  })
+    .then((dbUserData) => {
+      console.log(dbUserData);
+      if (!dbUserData) {
+        res.status(404).json({ message: "No user found with this id" });
+        return;
+      }
+      const userData = dbUserData.get({ plain: true });
+      console.log(".... userData:", userData);
+      // const savedJokes = userData.jokes;
+
+      res.render("updateUser", {
+        userData,
+        loggedIn: req.session.loggedIn,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 // get html for user dashboard
 router.get("/dashboard", (req, res) => {
   // if (!req.session.loggedIn) {
