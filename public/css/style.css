@@ -149,6 +149,25 @@ iframe{
   box-shadow: 2px 2px var(--dark);
 }
 
+#update-btn {
+  background-color: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: none;
+  width: 200px;
+  box-shadow: 3px 3px var(--light-dark);
+  margin-bottom: 15px;
+}
+
+#update-btn:hover {
+  background-color: white;
+}
+
+#update-btn a {
+  color: var(--primary);
+}
+
 .btn-inline {
   display: inline;
 }
