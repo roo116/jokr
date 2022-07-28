@@ -8,8 +8,9 @@ async function updateFormHandler(event) {
     if (username && email && password) {
       // const userId = this.dataset.id;
       const userId = 14;
-      console.log(">>> checkid ", userId);
-      const response = await fetch(`/api/users/${userId}`, {
+      // console.log(">>> checkid ", userId);
+      console.log(sessionStorage.getItem('user_id'));
+      const response = await fetch(`/api/users/:id`, {
         method: "PUT",
         body: JSON.stringify({
           username,

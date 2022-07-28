@@ -14,6 +14,22 @@ router.get("/", (req, res) => {
     });
 });
 
+// router.put("/", (req, res) => {
+//   User.update(req.body, {
+//     individualHooks: true,
+//     where: {
+//       id: req.session.id,
+//     },
+//   })
+//   .then((dbUserData) => {
+//     if (!dbJokeData) {
+//       res.status(404).json({ message: "No user found with this id" });
+//       return;
+//     }
+
+//   })
+// })
+
 // get 1 users
 router.get("/:id", (req, res) => {
   User.findOne({
@@ -122,7 +138,7 @@ router.put("/:id", (req, res) => {
   User.update(req.body, {
     individualHooks: true,
     where: {
-      id: req.params.id,
+      id: req.session.user_id,
     },
   })
     .then((dbUserData) => {
