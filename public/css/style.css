@@ -366,6 +366,20 @@ footer {
   flex: 0 0 100%;
 }
 
+@media screen and (max-width: 538px) {
+  .btn {
+    font-size: smaller;
+  }
+
+  .nav-item {
+    width: 15px;
+  }
+
+  .nav-item a {
+    font-size: 10px;
+  }
+}
+
 /* col-sm */
 @media screen and (min-width: 640px) {
   .col-sm-1 {
