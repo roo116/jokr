@@ -36,8 +36,11 @@ async function categorySearchHandler(event) {
       </div>
         `;
         jokeCardEl.classList.add("joke-card");
-        jokeCardEl.addEventListener("click", saveJokeHandler);
         resultContainer.appendChild(jokeCardEl);
+      });
+      const saveButtons = document.querySelectorAll(".save-btn");
+      saveButtons.forEach((saveButton) => {
+        saveButton.addEventListener("click", saveJokeHandler);
       });
     });
   } else {
@@ -46,8 +49,18 @@ async function categorySearchHandler(event) {
 }
 
 async function saveJokeHandler(event) {
-    const joke_id = this.querySelector('.save-btn').dataset.id;
-    // console.log(joke_id);
+  // re-save attempt handling before page reload
+    document.querySelector("#alert-container").textContent = "";
+    //TODO: check to see if the joke is saved or not, add result to below if statement
+    const text = this.textContent;
+    if (text === "Saved!") {
+      document.querySelector("#alert-container").textContent =
+        "That joke has already been saved to your favorites!";
+      return;
+    }
+
+    //save the joke
+    const joke_id = this.dataset.id;
 
     const response = await fetch(`api/savedjokes/`, {
       method: "POST",
@@ -58,7 +71,7 @@ async function saveJokeHandler(event) {
     });
 
     if (response.ok) {
-      this.querySelector('.save-btn').textContent = "Saved!";
+      this.textContent = "Saved!";
     } else {
       alert(response.statusText);
     }

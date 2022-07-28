@@ -5,15 +5,22 @@ deleteButtons.forEach((deleteButton) => {
 });
 
 async function deleteJokeHandler(event) {
-    const savedJokeId = this.dataset.id;
+  document.querySelector("#alert-container").textContent = "";
+  const text = this.textContent;
+  if (text === "Deleted!") {
+    document.querySelector("#alert-container").textContent =
+      "That joke has already been deleted from your favorites!";
+    return;
+  }
+  const savedJokeId = this.dataset.id;
 
-    const response = await fetch(`api/savedjokes/${savedJokeId}`, {
-        method: "DELETE",
-      });
-  
-      if (response.ok) {
-        this.textContent = "Deleted!";
-      } else {
-        alert(response.statusText);
-      }
+  const response = await fetch(`api/savedjokes/${savedJokeId}`, {
+    method: "DELETE",
+  });
+
+  if (response.ok) {
+    this.textContent = "Deleted!";
+  } else {
+    alert(response.statusText);
+  }
 }
