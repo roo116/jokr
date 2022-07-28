@@ -1,7 +1,8 @@
-<button id="update-btn" class="btn"><a href="/updateUser">Update User Info</a></button>
+<button id="update-btn" class="btn blue-btn"><a href="/updateUser">Update User Info</a></button>
 <div id="saved-joke-container">
   {{#if savedJokes.length}}
   <h3>Saved Jokes:</h3>
+  <p id="alert-container"></p>
   <div id="joke-card-container">
     {{#each savedJokes}}
     <div class="joke-card">

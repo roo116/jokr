@@ -1,18 +1,8 @@
-/* Hey Veronica! Here's some hex codes:
-red - #ff99a1
-blue - #99ccff
-green - #99ffc4
-yellow - #ffffb3
-I used an website toget these, it's really helpful and has sliders for darker, lighter, or more saturated. Go wild,
-if you want to change any colors of make more, go for it. Here's the site:
-https://www.hexcolortool.com/ */
-
 :root {
-  --primary: #004466;
-  --secondary: #00b159;
-  --tertiary: #d11141;
-  --light-dark: #f37735;
-  --dark: #99ddf9;
+  --light-blue-blue: #004466;
+  --red: #d11141;
+  --orange: #f37735;
+  --light-blue: #99ddf9;
   --border-radius: 0.3rem;
 }
 
@@ -21,11 +11,11 @@ https://www.hexcolortool.com/ */
 }
 
 body {
-  background-color: var(--primary);
+  background-color: var(--light-blue-blue);
   margin: 0;
   padding: 0;
   font-family: "IBM Plex Sans", sans-serif;
-  color: var(--dark);
+  color: var(--light-blue);
   line-height: 1.5;
   font-size: 16px;
 }
@@ -38,16 +28,16 @@ h5,
 h6 {
   font-weight: 700;
   margin: 0;
-  color: var(--dark);
+  color: var(--light-blue);
   line-height: 1.25;
 }
 
 h2 a:visited {
-  color: var(--tertiary);
+  color: var(--red);
 }
 
 h2 a {
-  color: var(--primary);
+  color: var(--light-blue-blue);
 }
 
 header {
@@ -86,13 +76,13 @@ iframe{
 }
 
 #category-list .category-link {
-  background-color: var(--dark);
-  color: var(--primary);
+  background-color: var(--light-blue);
+  color: var(--light-blue-blue);
   display: flex;
   align-items: center;
   justify-content: center;
   text-transform: none;
-  box-shadow: 3px 3px var(--light-dark);
+  box-shadow: 3px 3px var(--orange);
 }
 
 #category-list .category-link:hover {
@@ -108,7 +98,7 @@ iframe{
 .joke-card {
   width: 350px;
   margin: 30px;
-  color:var(--primary)
+  color:var(--light-blue-blue)
 }
 
 .card-stacked {
@@ -123,7 +113,7 @@ iframe{
 }
 
 .card-header h2 {
-  color: var(--primary);
+  color: var(--light-blue-blue);
 }
 
 .btn {
@@ -134,38 +124,38 @@ iframe{
   display: block;
   margin: 5px 0;
   border-radius: var(--border-radius);
-  color: var(--primary);
+  color: var(--light-blue-blue);
   border: none;
   outline: none;
-  background-color: var(--light-dark);
-  box-shadow: 3px 3px var(--dark);
+  background-color: var(--orange);
+  box-shadow: 3px 3px var(--light-blue);
   transform: translate(-1px, -1px);
 }
 
 .btn:hover {
-  color: var(--primary);
-  background-color: var(--tertiary);
+  color: var(--light-blue-blue);
+  background-color: var(--red);
   transform: translate(0, 0);
-  box-shadow: 2px 2px var(--dark);
+  box-shadow: 2px 2px var(--light-blue);
 }
 
-#update-btn {
-  background-color: var(--dark);
+.blue-btn {
+  background-color: var(--light-blue);
   display: flex;
   align-items: center;
   justify-content: center;
   text-transform: none;
   width: 200px;
-  box-shadow: 3px 3px var(--light-dark);
+  box-shadow: 3px 3px var(--orange);
   margin-bottom: 15px;
 }
 
-#update-btn:hover {
+.blue-btn:hover {
   background-color: white;
 }
 
 #update-btn a {
-  color: var(--primary);
+  color: var(--light-blue-blue);
 }
 
 .btn-inline {
@@ -179,7 +169,7 @@ iframe{
 .navbar {
   margin-top: 30px;
   width: 100%;
-  background-color: var(--primary);
+  background-color: var(--light-blue-blue);
 }
 
 .nav-item {
@@ -187,13 +177,13 @@ iframe{
 }
 
 .nav-item a {
-  color: var(--dark);
+  color: var(--light-blue);
 }
 
 .hero {
   padding: 3% 4%;
-  background-color: var(--dark);
-  color: var(--primary);
+  background-color: var(--light-blue);
+  color: var(--light-blue-blue);
 }
 
 .hero p {
@@ -202,16 +192,16 @@ iframe{
 
 .app-title {
   font-size: 3rem;
-  background-color: var(--primary);
-  color: var(--dark);
+  background-color: var(--light-blue-blue);
+  color: var(--light-blue);
   padding: 0 10px;
   display: inline-block;
   border-radius: var(--border-radius);
-  box-shadow: 6px 5px var(--light-dark);
+  box-shadow: 6px 5px var(--orange);
 }
 
 .app-title a {
-  color: var(--dark);
+  color: var(--light-blue);
 }
 
 .list-group {
@@ -222,13 +212,13 @@ iframe{
   margin-bottom: 10px;
   padding: 1.5%;
   border-radius: var(--border-radius);
-  background-color: var(--light-dark);
-  color: var(--primary);
+  background-color: var(--orange);
+  color: var(--light-blue-blue);
   text-decoration: none;
 }
 
 .list-item:hover {
-  background-color: var(--dark);
+  background-color: var(--light-blue);
 }
 
 footer {
@@ -239,29 +229,11 @@ footer {
   display: inline-block;
   padding: 1em;
   margin-bottom: .5em;
-  background-color: var(--dark);
-  color: var(--primary);
+  background-color: var(--light-blue);
+  color: var(--light-blue-blue);
   border-radius: var(--border-radius);
   text-decoration: none;
 }
-
-/* CARDS */
-/* .card {
-  margin: 0 0 20px 0;
-  border: 3px solid var(--dark);
-  border-radius: var(--border-radius);
-}
-
-.card-header {
-  color: var(--primary);
-  background-color: var(--dark);
-  padding: 1%;
-  border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
-}
-
-.card-body {
-  padding: 1%;
-} */
 
 /* FORM */
 .form-label,
@@ -280,7 +252,7 @@ footer {
   padding: 1%;
   margin: 5px 0;
   font-size: 1.2rem;
-  border: 2px solid var(--light-dark);
+  border: 2px solid var(--orange);
   border-radius: var(--border-radius);
 }
 
@@ -392,6 +364,20 @@ footer {
 
 .col-12 {
   flex: 0 0 100%;
+}
+
+@media screen and (max-width: 538px) {
+  .btn {
+    font-size: smaller;
+  }
+
+  .nav-item {
+    width: 15px;
+  }
+
+  .nav-item a {
+    font-size: 10px;
+  }
 }
 
 /* col-sm */

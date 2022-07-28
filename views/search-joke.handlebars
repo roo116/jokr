@@ -3,11 +3,17 @@
   <div id="category-container">
     <ul id="category-list">
       {{#each categories}}
-      <button id="{{id}}" class="category-link btn" type="button">{{category_name}}</button>
+        <button
+          id="{{id}}"
+          class="category-link btn"
+          type="button"
+        >{{category_name}}</button>
         {{!-- <li id="{{id}}" class="category-link"><a>{{category_name}}</a></li> --}}
       {{/each}}
     </ul>
   </div>
+
+  <p id="alert-container"></p>
 
   <div id="joke-card-container">
   </div>
