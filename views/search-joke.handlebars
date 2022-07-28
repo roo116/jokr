@@ -3,7 +3,8 @@
   <div id="category-container">
     <ul id="category-list">
       {{#each categories}}
-        <li id="{{id}}" class="category-link"><a>{{category_name}}</a></li>
+      <button id="{{id}}" class="category-link btn" type="button">{{category_name}}</button>
+        {{!-- <li id="{{id}}" class="category-link"><a>{{category_name}}</a></li> --}}
       {{/each}}
     </ul>
   </div>
