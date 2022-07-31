@@ -40,7 +40,7 @@ async function categorySearchHandler(event) {
       });
       const saveButtons = document.querySelectorAll(".save-btn");
       saveButtons.forEach((saveButton) => {
-        saveButton.addEventListener("click", saveJokeHandler);
+        saveButton.addEventListener("click", checkSavedJokes);
       });
     });
   } else {
@@ -48,31 +48,50 @@ async function categorySearchHandler(event) {
   }
 }
 
-async function saveJokeHandler(event) {
-  // re-save attempt handling before page reload
-    document.querySelector("#alert-container").textContent = "";
-    //TODO: check to see if the joke is saved or not, add result to below if statement
-    const text = this.textContent;
-    if (text === "Saved!") {
-      document.querySelector("#alert-container").textContent =
-        "That joke has already been saved to your favorites!";
-      return;
-    }
+async function checkSavedJokes(event) {
+  // reset alert container
+  document.querySelector("#alert-container").textContent = "";
+  //get joke id from html
+  const joke_id = this.dataset.id;
 
-    //save the joke
-    const joke_id = this.dataset.id;
+  // check to see if the joke is already saved
+  const check = await fetch(`api/savedjokes/${joke_id}`, {
+    method: "GET",
+  });
 
-    const response = await fetch(`api/savedjokes/`, {
-      method: "POST",
-      body: JSON.stringify({
-        joke_id,
-      }),
-      headers: { "Content-Type": "application/json" },
+  if (check.ok) {
+    check.json().then((data) => {
+      // if it isn't saved, save it
+      if (!data) {
+        saveJoke(this);
+      }
+      // if it is saved, tell the client
+      else {
+        document.querySelector(
+          "#alert-container"
+        ).textContent = `${data.message}`;
+      }
     });
+  } else {
+    alert(response.statusText);
+  }
+}
 
-    if (response.ok) {
-      this.textContent = "Saved!";
-    } else {
-      alert(response.statusText);
-    }
+// save a joke
+async function saveJoke(buttonEl) {
+  const joke_id = buttonEl.dataset.id;
+  //save the joke
+  const response = await fetch(`api/savedjokes/`, {
+    method: "POST",
+    body: JSON.stringify({
+      joke_id,
+    }),
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (response.ok) {
+    buttonEl.textContent = "Saved!";
+  } else {
+    alert(response.statusText);
+  }
 }

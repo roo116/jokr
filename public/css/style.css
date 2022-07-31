@@ -67,6 +67,16 @@ input {
 iframe{
   float: right;
 }
+
+.form-title {
+  margin-top: 60px;
+}
+
+.larger {
+  font-size: larger;
+  font-weight: bold;
+}
+
 #category-list {
   display: flex;
 }

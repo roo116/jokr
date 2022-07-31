@@ -11,6 +11,30 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/:id", (req, res) => {
+  console.log(req.params.id);
+  SavedJoke.findOne({
+    where: {
+      user_id: req.session.user_id,
+      joke_id: req.params.id,
+    },
+  })
+    .then((dbSavedJokeData) => {
+      if (!dbSavedJokeData) {
+        console.log(dbSavedJokeData);
+        res.json(dbSavedJokeData);
+        return;
+      }
+      res.json({
+        message: "That joke has already been saved to your favorites!",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 router.post("/", (req, res) => {
   SavedJoke.create({
     joke_id: req.body.joke_id,
