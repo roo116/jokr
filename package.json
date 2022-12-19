@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dolcebasstrombone/jokr.git"
+    "url": "git+https://github.com/roo116/jokr.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dolcebasstrombone/jokr/issues"
+    "url": "https://github.com/roo116/jokr/issues"
   },
-  "homepage": "https://github.com/dolcebasstrombone/jokr#readme",
+  "homepage": "https://github.com/roo116/jokr#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.4",
